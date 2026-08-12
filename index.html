@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Luma Studio — painel e agenda inteligente para gestão de salão."
+    />
+    <title>Luma Studio | Gestão inteligente</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Navegação principal">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div>
+            <strong>Luma</strong>
+            <small>studio manager</small>
+          </div>
+        </div>
+
+        <div class="workspace-switcher">
+          <div class="workspace-avatar">KD</div>
+          <div>
+            <strong>Luma Studio</strong>
+            <span>Plano Essencial</span>
+          </div>
+          <button class="icon-button subtle" aria-label="Trocar unidade" data-toast="Troca de unidade estará disponível em breve.">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </button>
+        </div>
+
+        <nav class="main-nav">
+          <p class="nav-label">Visão geral</p>
+          <button class="nav-item active" data-view-target="dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>Dashboard</span>
+          </button>
+          <button class="nav-item" data-view-target="agenda">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+            <span>Agenda inteligente</span>
+            <span class="nav-dot"></span>
+          </button>
+
+          <p class="nav-label nav-label-spaced">Cadastros</p>
+          <button class="nav-item" data-view-target="clientes">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.7-4 3.3-6 8-6s7.3 2 8 6"/></svg>
+            <span>Clientes</span>
+          </button>
+          <button class="nav-item" data-view-target="servicos">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2 2.3-2.3Z"/></svg>
+            <span>Serviços</span>
+          </button>
+          <p class="nav-label nav-label-spaced">Próximas etapas</p>
+          <button class="nav-item locked" data-toast="Financeiro será construído em uma etapa posterior.">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M5 6l1 14h12l1-14M9 10h6M9 14h4"/></svg>
+            <span>Financeiro</span>
+          </button>
+          <button class="nav-item locked" data-toast="Relatórios será construído em uma etapa posterior.">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M8 16v-5M13 16V8M18 16V4"/></svg>
+            <span>Relatórios</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="support-card">
+            <span class="support-icon">✦</span>
+            <div>
+              <strong>Precisa de ajuda?</strong>
+              <p>Veja como organizar sua agenda.</p>
+            </div>
+            <button class="text-link" data-toast="Central de ajuda em breve.">Ver guia</button>
+          </div>
+          <button class="profile-row" data-toast="Configurações de perfil em breve.">
+            <span class="person-avatar avatar-camila">KD</span>
+            <span><strong>Equipe Luma</strong><small>Gestão</small></span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="mobile-menu-button" aria-label="Abrir menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="topbar-context" id="topbar-context">
+            <p>sexta-feira, 31 de julho</p>
+            <h1>Bom dia, equipe <span aria-hidden="true">✦</span></h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button notification-button" aria-label="Notificações" data-toast="Você tem 3 confirmações pendentes.">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+              <span></span>
+            </button>
+            <div class="topbar-divider"></div>
+            <button class="top-profile" data-toast="Perfil da equipe">
+              <span class="person-avatar avatar-camila">KD</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <section class="page dashboard-view active-view" id="dashboard-view" aria-labelledby="dashboard-title">
+          <div class="page-heading dashboard-heading">
+            <div>
+              <span class="eyebrow">VISÃO DO DIA</span>
+              <h2 id="dashboard-title">Seu salão está em movimento.</h2>
+              <p>Veja o que precisa da sua atenção hoje.</p>
+            </div>
+            <div class="heading-actions">
+              <button class="button secondary" id="go-to-agenda">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+                Abrir agenda
+              </button>
+              <button class="button primary" data-open-new-appointment>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Novo agendamento
+              </button>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card featured">
+              <div class="metric-head">
+                <span>Faturamento hoje</span>
+                <span class="metric-icon teal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 11l4 4 8-10"/><path d="M15 5h6v6"/></svg></span>
+              </div>
+              <strong class="metric-value">R$ 2.840<span>,00</span></strong>
+              <p class="trend positive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5-5 4 4 5-5"/><path d="M14 6h5v5"/></svg> 18,4% <span>vs. última sexta</span></p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-head">
+                <span>Meta mensal</span>
+                <span class="metric-icon lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M7 7h7.5a3.5 3.5 0 0 1 0 7H9.5a3.5 3.5 0 0 0 0 7H17"/></svg></span>
+              </div>
+              <strong class="metric-value">78<span>%</span></strong>
+              <div class="mini-progress"><span style="width:78%"></span></div>
+              <p class="metric-caption">R$ 23.480 de R$ 30.000</p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-head">
+                <span>Ticket médio</span>
+                <span class="metric-icon peach"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v7l11 11a3 3 0 0 0 4.24 0l2.76-2.76a3 3 0 0 0 0-4.24L10 3H3Z"/><circle cx="7.5" cy="7.5" r="1"/></svg></span>
+              </div>
+              <strong class="metric-value">R$ 162<span>,30</span></strong>
+              <p class="trend positive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5-5 4 4 5-5"/><path d="M14 6h5v5"/></svg> 6,8% <span>este mês</span></p>
+            </article>
+            <article class="metric-card">
+              <div class="metric-head">
+                <span>Contas a receber</span>
+                <span class="metric-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span>
+              </div>
+              <strong class="metric-value">R$ 1.260<span>,00</span></strong>
+              <p class="metric-caption"><span class="warning-dot"></span> 4 pagamentos pendentes</p>
+            </article>
+          </div>
+
+          <div class="finance-strip" aria-label="Resumo financeiro">
+            <article>
+              <span class="finance-icon forest-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M8 16v-5M13 16V8M18 16V4"/></svg></span>
+              <div><small>Faturamento semanal</small><strong id="finance-weekly">R$ 15.780,00</strong></div>
+              <p class="trend positive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5-5 4 4 5-5"/><path d="M14 6h5v5"/></svg> 12,6%</p>
+            </article>
+            <article>
+              <span class="finance-icon mint-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 11l4 4 8-10"/><path d="M15 5h6v6"/></svg></span>
+              <div><small>Faturamento mensal</small><strong id="finance-monthly">R$ 23.480,00</strong></div>
+              <p class="trend positive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5-5 4 4 5-5"/><path d="M14 6h5v5"/></svg> 9,2%</p>
+            </article>
+            <article>
+              <span class="finance-icon lavender-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M7 7h7.5a3.5 3.5 0 0 1 0 7H9.5a3.5 3.5 0 0 0 0 7H17"/></svg></span>
+              <div><small>Lucro líquido</small><strong id="finance-profit">R$ 8.620,00</strong></div>
+              <p class="finance-caption">Margem de 36,7%</p>
+            </article>
+            <article>
+              <span class="finance-icon peach-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M5 6l1 14h12l1-14M9 10h6M9 14h4"/></svg></span>
+              <div><small>Contas a pagar</small><strong id="finance-payable">R$ 1.120,00</strong></div>
+              <p class="finance-caption"><span class="warning-dot"></span> Vencem nesta semana</p>
+            </article>
+          </div>
+
+          <div class="dashboard-main-grid">
+            <article class="panel revenue-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Faturamento</h3>
+                  <p>Uma semana de bons resultados.</p>
+                </div>
+                <div class="segmented-control" aria-label="Período do faturamento">
+                  <button class="active" data-revenue-period="week">Semana</button>
+                  <button data-revenue-period="month">Mês</button>
+                </div>
+              </div>
+              <div class="revenue-summary">
+                <strong id="revenue-total">R$ 15.780,00</strong>
+                <span class="trend positive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5-5 4 4 5-5"/><path d="M14 6h5v5"/></svg> 12,6%</span>
+              </div>
+              <div class="chart-shell">
+                <div class="chart-y-axis"><span>3k</span><span>2k</span><span>1k</span><span>0</span></div>
+                <div class="chart-area">
+                  <div class="chart-lines"><i></i><i></i><i></i><i></i></div>
+                  <svg class="revenue-chart" id="revenue-chart" viewBox="0 0 700 220" preserveAspectRatio="none" role="img" aria-label="Gráfico de faturamento semanal">
+                    <defs>
+                      <linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#55b69e" stop-opacity=".28"/>
+                        <stop offset="100%" stop-color="#55b69e" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path class="chart-fill" d="M0,184 C35,170 45,137 76,144 S120,132 153,141 S202,97 232,107 S273,138 309,119 S355,71 386,82 S430,89 463,76 S511,109 541,94 S583,41 617,53 S661,24 700,34 L700,220 L0,220 Z"></path>
+                    <path class="chart-line" d="M0,184 C35,170 45,137 76,144 S120,132 153,141 S202,97 232,107 S273,138 309,119 S355,71 386,82 S430,89 463,76 S511,109 541,94 S583,41 617,53 S661,24 700,34"></path>
+                    <circle class="chart-point" cx="617" cy="53" r="5"></circle>
+                  </svg>
+                  <div class="chart-tooltip" id="chart-tooltip"><span>Qui, 30 Jul</span><strong>R$ 2.840</strong></div>
+                  <div class="chart-x-axis"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel goal-panel">
+              <div class="panel-header compact">
+                <div>
+                  <h3>Meta de julho</h3>
+                  <p>Faltam 7 dias</p>
+                </div>
+                <button class="more-button" aria-label="Mais opções" data-toast="Detalhes da meta em breve."><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button>
+              </div>
+              <div class="goal-ring" aria-label="78 por cento da meta atingida">
+                <div><strong>78%</strong><span>atingido</span></div>
+              </div>
+              <div class="goal-numbers"><span>Realizado <strong>R$ 23.480</strong></span><span>Meta <strong>R$ 30.000</strong></span></div>
+              <div class="goal-tip"><span>✦</span><p>Faltam <strong>R$ 6.520</strong>. Sua média diária necessária é de <strong>R$ 931</strong>.</p></div>
+            </article>
+          </div>
+
+          <div class="dashboard-bottom-grid">
+            <article class="panel salon-now-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Agora no salão</h3>
+                  <p>sexta-feira, 31 de julho</p>
+                </div>
+                <button class="text-action" id="go-to-agenda-link">Ver agenda <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+              </div>
+              <div class="now-statuses">
+                <div class="now-status">
+                  <span class="status-orb peach-bg">2</span>
+                  <p><strong>Aguardando</strong><small>para atendimento</small></p>
+                </div>
+                <div class="now-status">
+                  <span class="status-orb green-bg">3</span>
+                  <p><strong>Em atendimento</strong><small>agora</small></p>
+                </div>
+                <div class="now-status">
+                  <span class="status-orb blue-bg">5</span>
+                  <p><strong>Próximos</strong><small>nas próximas 2h</small></p>
+                </div>
+              </div>
+              <div class="live-appointments">
+                <div class="live-row">
+                  <time>10:30</time><span class="person-avatar avatar-ana">AL</span>
+                  <div><strong>Cliente 01</strong><small>Coloração · com Profissional 01</small></div><span class="status-pill confirmed">Confirmado</span>
+                </div>
+                <div class="live-row">
+                  <time>11:00</time><span class="person-avatar avatar-julia">JM</span>
+                  <div><strong>Cliente 02</strong><small>Corte + escova · com Profissional 02</small></div><span class="status-pill progress">Em atendimento</span>
+                </div>
+                <div class="live-row">
+                  <time>11:30</time><span class="person-avatar avatar-marina">MS</span>
+                  <div><strong>Cliente 03</strong><small>Manicure · com Profissional 03</small></div><span class="status-pill scheduled">Agendado</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel appointments-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Próximos horários</h3>
+                  <p>Hoje, na sua agenda</p>
+                </div>
+                <button class="more-button" aria-label="Mais horários" id="go-to-agenda-more"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </div>
+              <div class="next-list" id="dashboard-next-list"></div>
+            </article>
+
+            <article class="panel professionals-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Profissionais em destaque</h3>
+                  <p>Faturamento do mês</p>
+                </div>
+                <button class="more-button" aria-label="Ver ranking" data-toast="Ranking completo em breve."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </div>
+              <div class="professional-ranking">
+                <div class="ranking-row"><span class="ranking-number">01</span><span class="person-avatar avatar-bia">P1</span><div><strong>Profissional 01</strong><small>Colorista</small></div><strong>R$ 8.340</strong><span class="rank-bar"><i style="width:89%"></i></span></div>
+                <div class="ranking-row"><span class="ranking-number">02</span><span class="person-avatar avatar-carol">P2</span><div><strong>Profissional 02</strong><small>Hair stylist</small></div><strong>R$ 7.860</strong><span class="rank-bar"><i style="width:81%"></i></span></div>
+                <div class="ranking-row"><span class="ranking-number">03</span><span class="person-avatar avatar-nati">P3</span><div><strong>Profissional 03</strong><small>Nail designer</small></div><strong>R$ 6.120</strong><span class="rank-bar"><i style="width:64%"></i></span></div>
+              </div>
+            </article>
+          </div>
+          <div class="dashboard-insights-grid">
+            <article class="panel performance-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>O que mais vendeu</h3>
+                  <p>Serviços e produtos no mês</p>
+                </div>
+                <button class="more-button" aria-label="Ver detalhes de vendas" data-toast="Detalhamento de vendas em breve."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+              </div>
+              <div class="sales-lists">
+                <div>
+                  <span class="list-kicker">SERVIÇOS</span>
+                  <div class="sale-line"><strong>Coloração</strong><span><i style="width:92%"></i></span><b>32</b></div>
+                  <div class="sale-line"><strong>Corte + escova</strong><span><i style="width:73%"></i></span><b>26</b></div>
+                  <div class="sale-line"><strong>Manicure</strong><span><i style="width:59%"></i></span><b>21</b></div>
+                </div>
+                <div>
+                  <span class="list-kicker">PRODUTOS</span>
+                  <div class="product-line"><span class="product-swatch amber">K</span><div><strong>Máscara Kérastase</strong><small>18 unidades</small></div><b>R$ 2.1k</b></div>
+                  <div class="product-line"><span class="product-swatch rose">L</span><div><strong>L'Oréal Absolut</strong><small>14 unidades</small></div><b>R$ 1.5k</b></div>
+                  <div class="product-line"><span class="product-swatch mint-swatch">W</span><div><strong>Wella Oil Reflections</strong><small>11 unidades</small></div><b>R$ 980</b></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel peak-hours-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Horários mais movimentados</h3>
+                  <p>Últimos 30 dias</p>
+                </div>
+                <span class="peak-badge">Pico: 14h</span>
+              </div>
+              <div class="peak-chart" aria-label="Gráfico de horários mais movimentados">
+                <div><i style="height:30%"></i><span>9h</span></div>
+                <div><i style="height:52%"></i><span>10h</span></div>
+                <div><i style="height:72%"></i><span>11h</span></div>
+                <div><i style="height:46%"></i><span>12h</span></div>
+                <div><i style="height:68%"></i><span>13h</span></div>
+                <div class="peak"><i style="height:100%"></i><span>14h</span></div>
+                <div><i style="height:83%"></i><span>15h</span></div>
+                <div><i style="height:57%"></i><span>16h</span></div>
+                <div><i style="height:38%"></i><span>17h</span></div>
+              </div>
+              <p class="peak-footer"><span></span> 14h às 16h concentram 31% dos seus atendimentos.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="page agenda-view" id="agenda-view" aria-labelledby="agenda-title">
+          <div class="page-heading agenda-heading">
+            <div>
+              <span class="eyebrow">OPERAÇÃO DO DIA</span>
+              <h2 id="agenda-title">Agenda inteligente</h2>
+              <p>Organize a rotina do salão sem sobrepor horários.</p>
+            </div>
+            <button class="button primary" data-open-new-appointment>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Novo agendamento
+            </button>
+          </div>
+
+          <div class="agenda-toolbar">
+            <div class="date-nav">
+              <button class="icon-button" id="previous-date" aria-label="Dia anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+              <button class="agenda-date" id="agenda-date-button"><strong id="agenda-date-label">Hoje, 31 de julho</strong><span id="agenda-date-subtitle">sexta-feira</span></button>
+              <button class="icon-button" id="next-date" aria-label="Próximo dia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+              <button class="today-button" id="today-button">Hoje</button>
+            </div>
+            <div class="agenda-toolbar-actions">
+              <button class="button toolbar-button" id="block-time-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v4M18 3v4M4 10h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1ZM9 14l6 0"/></svg> Bloquear horário</button>
+              <div class="view-switcher" aria-label="Modo de visualização">
+                <button class="active" data-calendar-view="day">Dia</button>
+                <button data-calendar-view="week">Semana</button>
+                <button data-calendar-view="month">Mês</button>
+              </div>
+              <button class="filter-button" id="filters-button" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span>Filtros</span><i id="filter-count"></i></button>
+            </div>
+          </div>
+
+          <div class="filters-popover" id="filters-popover" hidden>
+            <div class="filter-popover-heading"><strong>Filtrar agenda</strong><button id="clear-filters">Limpar</button></div>
+            <label>Profissional<select id="professional-filter"><option value="all">Todos os profissionais</option></select></label>
+            <label>Status<select id="status-filter"><option value="all">Todos os status</option><option value="scheduled">Agendado</option><option value="confirmed">Confirmado</option><option value="progress">Em atendimento</option><option value="finished">Finalizado</option><option value="cancelled">Cancelado</option><option value="no-show">Não compareceu</option></select></label>
+          </div>
+
+          <div class="agenda-legend">
+            <span><i class="legend-dot scheduled-dot"></i> Agendado</span>
+            <span><i class="legend-dot confirmed-dot"></i> Confirmado</span>
+            <span><i class="legend-dot progress-dot"></i> Em atendimento</span>
+            <span><i class="legend-dot blocked-dot"></i> Bloqueio</span>
+            <span class="legend-help"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> Arraste para reagendar</span>
+          </div>
+
+          <div class="calendar-wrap">
+            <div class="calendar-day-view" id="calendar-day-view">
+              <div class="calendar-scroll" id="calendar-scroll">
+                <div class="calendar-grid" id="calendar-grid"></div>
+              </div>
+            </div>
+            <div class="calendar-week-view" id="calendar-week-view" hidden></div>
+            <div class="calendar-month-view" id="calendar-month-view" hidden></div>
+          </div>
+        </section>
+
+        <section class="page clientes-view" id="clientes-view" aria-labelledby="clientes-title">
+          <div class="page-heading clientes-heading">
+            <div>
+              <span class="eyebrow">BASE DE CLIENTES</span>
+              <h2 id="clientes-title">Clientes</h2>
+              <p>Gerencie quem frequenta o seu salão.</p>
+            </div>
+            <div class="heading-actions">
+              <button class="button primary" data-open-client-modal>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Novo cliente
+              </button>
+            </div>
+          </div>
+
+          <div class="clientes-stats" id="clientes-stats">
+            <article class="cliente-stat-card">
+              <span class="cliente-stat-icon teal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c.7-4 3.3-6 8-6s7.3 2 8 6"/></svg></span>
+              <div><strong id="stat-total">0</strong><small>Total de clientes</small></div>
+            </article>
+            <article class="cliente-stat-card">
+              <span class="cliente-stat-icon peach"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></span>
+              <div><strong id="stat-birthdays">0</strong><small>Aniversariantes do mês</small></div>
+            </article>
+            <article class="cliente-stat-card">
+              <span class="cliente-stat-icon lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4M21 12c0 5-4 8-9 9-5-1-9-4-9-9V5l9-3 9 3v7Z"/></svg></span>
+              <div><strong id="stat-lgpd">0</strong><small>Consentimento LGPD pendente</small></div>
+            </article>
+            <article class="cliente-stat-card">
+              <span class="cliente-stat-icon blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 11l4 4 8-10"/><path d="M15 5h6v6"/></svg></span>
+              <div><strong id="stat-revenue">R$ 0</strong><small>Receita total acumulada</small></div>
+            </article>
+            <article class="cliente-stat-card">
+              <span class="cliente-stat-icon teal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></span>
+              <div><strong id="stat-points">0</strong><small>Pontos de fidelidade</small></div>
+            </article>
+          </div>
+
+          <div class="clientes-toolbar">
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" id="client-search" placeholder="Buscar por nome, telefone ou WhatsApp..." />
+            </div>
+            <button class="filter-button is-active" id="client-filter-toggle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span>Filtrar</span></button>
+          </div>
+
+          <div class="clientes-grid" id="clientes-grid"></div>
+        </section>
+
+        <section class="page servicos-view" id="servicos-view" aria-labelledby="servicos-title">
+          <div class="page-heading servicos-heading">
+            <div>
+              <span class="eyebrow">CATÁLOGO</span>
+              <h2 id="servicos-title">Serviços</h2>
+              <p>Defina o que o seu salão oferece.</p>
+            </div>
+            <div class="heading-actions">
+              <button class="button primary" data-open-service-modal>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                Novo serviço
+              </button>
+            </div>
+          </div>
+
+          <div class="servicos-toolbar">
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" id="service-search" placeholder="Buscar serviço..." />
+            </div>
+          </div>
+
+          <div class="servicos-grid" id="servicos-grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden></div>
+    <section class="appointment-modal modal" id="appointment-modal" role="dialog" aria-modal="true" aria-labelledby="appointment-modal-title" hidden>
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow" id="modal-kicker">NOVO HORÁRIO</span>
+          <h2 id="appointment-modal-title">Novo agendamento</h2>
+        </div>
+        <button class="icon-button close-modal" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="appointment-form">
+        <input type="hidden" id="appointment-id" />
+        <div class="form-grid">
+          <label class="field full">Cliente
+            <select id="client-input" required>
+              <option value="">Selecione uma cliente</option>
+            </select>
+          </label>
+          <label class="field">Serviço
+            <select id="service-input" required></select>
+          </label>
+          <label class="field">Profissional
+            <select id="professional-input" required></select>
+          </label>
+          <label class="field">Data
+            <input id="date-input" type="date" required />
+          </label>
+          <label class="field">Horário
+            <select id="time-input" required></select>
+          </label>
+          <label class="field">Duração
+            <select id="duration-input" required>
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">1 hora</option>
+              <option value="90">1h30</option>
+              <option value="120">2 horas</option>
+              <option value="150">2h30</option>
+              <option value="180">3 horas</option>
+            </select>
+          </label>
+          <label class="field">Status
+            <select id="status-input" required>
+              <option value="scheduled">Agendado</option>
+              <option value="confirmed">Confirmado</option>
+              <option value="progress">Em atendimento</option>
+              <option value="finished">Finalizado</option>
+              <option value="cancelled">Cancelado</option>
+              <option value="no-show">Não compareceu</option>
+            </select>
+          </label>
+          <label class="field full">Observações
+            <textarea id="notes-input" rows="2" placeholder="Ex.: prefere um acabamento mais natural."></textarea>
+          </label>
+        </div>
+        <div class="conflict-box" id="conflict-box" hidden>
+          <div><span class="conflict-icon">!</span><p><strong>Esse horário conflita com outro compromisso.</strong><span id="conflict-message">Escolha um dos horários sugeridos abaixo.</span></p></div>
+          <div class="suggestions" id="conflict-suggestions"></div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="button secondary close-modal">Cancelar</button>
+          <button type="submit" class="button primary" id="save-appointment">Salvar agendamento</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="block-modal modal compact-modal" id="block-modal" role="dialog" aria-modal="true" aria-labelledby="block-modal-title" hidden>
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">GESTÃO DE AGENDA</span>
+          <h2 id="block-modal-title">Bloquear horário</h2>
+        </div>
+        <button class="icon-button close-modal" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="block-form">
+        <div class="form-grid">
+          <label class="field full">Profissional<select id="block-professional-input" required></select></label>
+          <label class="field">Data<input id="block-date-input" type="date" required /></label>
+          <label class="field">Início<select id="block-time-input" required></select></label>
+          <label class="field">Duração<select id="block-duration-input"><option value="30">30 min</option><option value="60">1 hora</option><option value="90">1h30</option><option value="120">2 horas</option></select></label>
+          <label class="field">Motivo<select id="block-type-input"><option value="Intervalo">Intervalo</option><option value="Almoço">Almoço</option><option value="Indisponível">Indisponível</option></select></label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="button secondary close-modal">Cancelar</button>
+          <button type="submit" class="button primary">Bloquear horário</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="client-modal modal" id="client-modal" role="dialog" aria-modal="true" aria-labelledby="client-modal-title" hidden>
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow" id="client-modal-kicker">NOVO CLIENTE</span>
+          <h2 id="client-modal-title">Cadastrar cliente</h2>
+        </div>
+        <button class="icon-button close-modal" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="client-form">
+        <input type="hidden" id="client-id" />
+        <div class="form-grid">
+          <label class="field">Nome
+            <input id="client-name-input" type="text" required placeholder="Nome completo" />
+          </label>
+          <label class="field">CPF
+            <input id="client-cpf-input" type="text" placeholder="000.000.000-00" />
+          </label>
+          <label class="field">Data de nascimento
+            <input id="client-birth-input" type="date" />
+          </label>
+          <label class="field">Sexo
+            <select id="client-gender-input">
+              <option value="">Selecione</option>
+              <option value="feminino">Feminino</option>
+              <option value="masculino">Masculino</option>
+              <option value="outro">Outro</option>
+            </select>
+          </label>
+          <label class="field">Contato
+            <input id="client-phone-input" type="tel" placeholder="(00) 0000-0000" />
+          </label>
+          <label class="field">WhatsApp
+            <input id="client-whatsapp-input" type="tel" placeholder="(00) 00000-0000" />
+          </label>
+          <label class="field">CEP
+            <input id="client-cep-input" type="text" placeholder="00000-000" />
+          </label>
+          <label class="field">Rua
+            <input id="client-street-input" type="text" placeholder="Nome da rua" />
+          </label>
+          <label class="field">Número
+            <input id="client-number-input" type="text" placeholder="123" />
+          </label>
+          <label class="field">Bairro
+            <input id="client-neighborhood-input" type="text" placeholder="Bairro" />
+          </label>
+          <label class="field">Cidade
+            <input id="client-city-input" type="text" placeholder="Cidade" />
+          </label>
+          <label class="field">Estado
+            <select id="client-state-input">
+              <option value="">Selecione</option>
+              <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+              <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+              <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+              <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+              <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+              <option value="PR">PR</option><option value="PE">PE</option><option value="PI">PI</option>
+              <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+              <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+              <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+            </select>
+          </label>
+          <label class="field full">Observações
+            <textarea id="client-notes-input" rows="2" placeholder="Notas gerais sobre a cliente."></textarea>
+          </label>
+          <label class="field full">Preferências
+            <textarea id="client-preferences-input" rows="2" placeholder="Ex.: prefere atendimento pela manhã."></textarea>
+          </label>
+          <label class="field full">Alergias
+            <input id="client-allergies-input" type="text" placeholder="Ex.: amônia, perfume" />
+          </label>
+          <label class="field full">Produtos utilizados
+            <input id="client-products-input" type="text" placeholder="Ex.: Kérastase, L'Oréal" />
+          </label>
+          <label class="field full checkbox-field">
+            <input id="client-lgpd-input" type="checkbox" />
+            <span>Consentimento LGPD — a cliente autoriza o tratamento dos seus dados.</span>
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="button secondary close-modal">Cancelar</button>
+          <button type="submit" class="button primary" id="save-client">Salvar cliente</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="service-modal modal compact-modal" id="service-modal" role="dialog" aria-modal="true" aria-labelledby="service-modal-title" hidden>
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow" id="service-modal-kicker">NOVO SERVIÇO</span>
+          <h2 id="service-modal-title">Cadastrar serviço</h2>
+        </div>
+        <button class="icon-button close-modal" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <form id="service-form">
+        <input type="hidden" id="service-id" />
+        <div class="form-grid">
+          <label class="field full">Nome
+            <input id="service-name-input" type="text" required placeholder="Ex.: Coloração" />
+          </label>
+          <label class="field">Categoria
+            <select id="service-category-input">
+              <option value="Cabelos">Cabelos</option>
+              <option value="Unhas">Unhas</option>
+              <option value="Sobrancelhas">Sobrancelhas</option>
+              <option value="Estética">Estética</option>
+              <option value="Maquiagem">Maquiagem</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </label>
+          <label class="field">Tempo de execução
+            <select id="service-duration-input">
+              <option value="30">30 min</option>
+              <option value="45">45 min</option>
+              <option value="60">1 hora</option>
+              <option value="90">1h30</option>
+              <option value="120">2 horas</option>
+              <option value="150">2h30</option>
+              <option value="180">3 horas</option>
+            </select>
+          </label>
+          <label class="field">Valor
+            <input id="service-price-input" type="number" step="0.01" min="0" required placeholder="0,00" />
+          </label>
+          <label class="field">Valor promocional
+            <input id="service-promo-input" type="number" step="0.01" min="0" placeholder="0,00" />
+          </label>
+          <label class="field">Comissão (%)
+            <input id="service-commission-input" type="number" step="1" min="0" max="100" placeholder="0" />
+          </label>
+          <label class="field full">Descrição
+            <textarea id="service-description-input" rows="2" placeholder="Descreva o serviço..."></textarea>
+          </label>
+          <label class="field full">Materiais utilizados
+            <input id="service-materials-input" type="text" placeholder="Ex.: tinta, shampoo, condicionador" />
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="button secondary close-modal">Cancelar</button>
+          <button type="submit" class="button primary" id="save-service">Salvar serviço</button>
+        </div>
+      </form>
+    </section>
+
+    <aside class="appointment-drawer" id="appointment-drawer" aria-labelledby="drawer-title" hidden>
+      <div class="drawer-header">
+        <div><span class="eyebrow">DETALHES DO HORÁRIO</span><h2 id="drawer-title">Agendamento</h2></div>
+        <button class="icon-button" id="close-drawer" aria-label="Fechar detalhes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div id="drawer-content"></div>
+    </aside>
+
+    <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="./js/api.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
