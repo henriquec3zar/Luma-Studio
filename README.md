@@ -27,8 +27,4 @@ Exemplo no HTML:
   window.APP_AGENDA_API_BASE = "https://seu-backend.example.com/api";
 </script>
 <script src="./js/api.js"></script>
-``` 
-
-## Publicação no GitHub
-
-Este frontend pode ser publicado publicamente sem expor informações pessoais ou chaves privadas.
+```
