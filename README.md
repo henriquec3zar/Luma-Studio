@@ -25,3 +25,13 @@ Depois acesse `http://localhost:3001`.
 O repositório foi preparado para não versionar dependências, bancos locais,
 arquivos `.env` ou material privado de trabalho. O seed público usa dados
 genéricos de demonstração.
+
+Exemplo no HTML:
+
+```html
+<script>
+  window.APP_AGENDA_API_BASE = "https://seu-backend.example.com/api";
+</script>
+<script src="./js/api.js"></script>
+```
+>>>>>>> 2bcacfceb26faf1bbb8c2e26a016b4b0f0cfaaa9
