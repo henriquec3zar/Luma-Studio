@@ -1,0 +1,16 @@
+{
+  "name": "app-agenda-backend",
+  "version": "1.0.0",
+  "description": "API REST para o sistema Luma Studio — Agenda Inteligente",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "init-db": "node scripts/init-db.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

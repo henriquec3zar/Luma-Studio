@@ -1,0 +1,25 @@
+# Dependências do Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+*.log
+
+# Banco de Dados
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de Sistema e Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Variáveis de Ambiente (se houver no futuro)
+.env
+.env.local
+.env.*
+!.env.example
+
+# Arquivos locais e material privado de trabalho
+.private/
