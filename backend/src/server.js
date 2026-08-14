@@ -3,6 +3,8 @@
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const csrf = require("csurf");
 
 const appointmentsRouter = require("./routes/appointments");
 const clientsRouter = require("./routes/clients");
@@ -15,6 +17,10 @@ const frontendDir = path.resolve(__dirname, "../../frontend");
 
 app.use(cors());
 app.use(express.json({ limit: "1mb", type: "application/json" }));
+app.use(cookieParser());
+
+// Configurar CSRF (apenas para solicitações POST, PUT, DELETE)
+const csrfProtection = csrf({ cookie: true });
 
 // UTF-8 explícito apenas nas rotas da API (não força JSON em assets estáticos)
 app.use("/api", function (_req, res, next) {
@@ -30,10 +36,15 @@ app.get("/api/health", function (_req, res) {
   });
 });
 
-app.use("/api/appointments", appointmentsRouter);
-app.use("/api/clients", clientsRouter);
-app.use("/api/services", servicesRouter);
-app.use("/api/professionals", professionalsRouter);
+// Endpoint para obter token CSRF
+app.get("/api/csrf-token", csrfProtection, function (req, res) {
+  res.json({ csrfToken: req.csrfToken() });
+});
+
+app.use("/api/appointments", csrfProtection, appointmentsRouter);
+app.use("/api/clients", csrfProtection, clientsRouter);
+app.use("/api/services", csrfProtection, servicesRouter);
+app.use("/api/professionals", csrfProtection, professionalsRouter);
 
 app.use(
   express.static(frontendDir, {
